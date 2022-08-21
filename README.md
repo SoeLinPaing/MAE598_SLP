@@ -1,1 +1,1 @@
-by Soe Lin Paing (MS MAE) FALL 2022
+MAE598 Design Optimization Repo by Soe Lin Paing (MS MAE) FALL 2022
