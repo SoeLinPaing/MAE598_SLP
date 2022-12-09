@@ -1,0 +1,38 @@
+# encoding: utf-8
+# 2022 R2
+SetScriptVersion(Version="22.2.192")
+Mechanical.CreateMechanicalModelSystemAndOpen()
+Save(Overwrite=True)
+favorites1 = EngData.LoadFavoriteItems()
+library1 = EngData.OpenLibrary(
+    Name="Piezoelectric Materials",
+    Source="Piezoelectric_Materials.xml")
+library2 = EngData.OpenLibrary(
+    Name="Magnetic B-H Curves",
+    Source="Magnetic_B-H_curves_Soft_Materials.xml")
+library3 = EngData.OpenLibrary(
+    Name="ANSYS GRANTA Materials Data for Simulation (Sample)",
+    Source="Granta_Design_Typical_Materials.xml")
+library4 = EngData.OpenLibrary(
+    Name="General Materials",
+    Source="General_Materials.xml")
+system1 = GetSystem(Name="Mechanical Model")
+engineeringData1 = system1.GetContainer(ComponentName="Engineering Data")
+matl1 = engineeringData1.ImportMaterial(
+    Name="Gray Cast Iron",
+    Source="General_Materials.xml")
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.Edit()
+geometry1.Exit()
+geometry1.SetFile(FilePath="C:/Users/slinp/Desktop/MAE598/MAE598_SLP/Project 2/brake.agdb")
+geometry1.Edit()
+geometry1.Exit()
+geometry1.SetFile(FilePath="C:/Users/slinp/Desktop/MAE598/MAE598_SLP/Project 2/brake_Geom.stp")
+geometry1.SetFile(FilePath="C:/Users/slinp/Desktop/MAE598/MAE598_SLP/Project 2/brake.agdb")
+modelComponent1 = system1.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model1 = system1.GetContainer(ComponentName="Model")
+model1.Edit()
+Save(Overwrite=True)
+Save(Overwrite=True)
+Save(Overwrite=True)
